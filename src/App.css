@@ -1,0 +1,32 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: none !important;
+    border-color: none !important;
+    scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+:focus-visible {
+    outline: none !important;
+}
+
+img {
+    cursor: pointer;
+}
+
+.active {
+    color: #bf3428
+}
+
+.d-n {
+    display: none !important;
+}
+
+#search,
+#slide {
+    transition: all .4s ease-in-out ;
+}
