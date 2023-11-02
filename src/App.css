@@ -47,3 +47,17 @@ img {
 .d-n {
   display: none;
 }
+
+.card {
+    width: 80%;
+    animation: box .6s ease ;
+}
+
+@keyframes box {
+    0%{
+        width: 0;
+    }
+    100% {
+        width: 80%;
+    }
+}
