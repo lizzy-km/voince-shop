@@ -9,7 +9,6 @@ const Category = () => {
   const fetchProducts = async () => {
     const response = await commerce.categories.list();
     setCategory((response && response.data) || []);
-    console.log(response);
   };
 
   useEffect(() => {

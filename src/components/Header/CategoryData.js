@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { commerce } from '../../lib/commerce';
+import React, { useEffect, useState } from "react";
+import { commerce } from "../../lib/commerce";
 
 const CategoryData = () => {
-    const [category, setCategory] = useState([]);
+  const [category, setCategory] = useState([]);
 
   const fetchProducts = async () => {
     const response = await commerce.categories.list();
@@ -13,8 +13,7 @@ const CategoryData = () => {
     fetchProducts();
   }, []);
 
-  return {category}
-  
-}
+  return { category };
+};
 
-export default CategoryData
+export default CategoryData;
