@@ -26,7 +26,22 @@ img {
     display: none !important;
 }
 
-#search,
-#slide {
+* {
     transition: all .4s ease-in-out ;
+}
+
+#catName {
+    opacity: 0;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+#category:hover #catName {
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.d-n {display: none;
+
 }

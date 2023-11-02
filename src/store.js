@@ -1,11 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { authApi } from "../api/AuthApi";
-import authSlice from "./authSlice";
-import { PhotoApi } from "../api/PhotoApi";
-import PhotoSlice from "./PhotoSlice";
-import UserPhotoSlice from "./UserPhotoSlice";
-import PostCategorySlice from "./PostCategorySlice";
-import { MangaPhotoApi } from "../api/PostApi";
 import { PostApi } from "./services/API/PostApi";
 import CartSlice from "./services/StateManage/CartSlice";
 

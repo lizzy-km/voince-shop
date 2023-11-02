@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 const initialState = {
   products:[],
   cart:[],
+  scroll: false
 };
 
 const STORAGE_KEY = "Products";
@@ -25,11 +26,15 @@ export const CartSlice = createSlice({
       state.products = payload.products;
       Cookies.set(STORAGE_KEY, JSON.stringify(state));
     },
+    scrollTop: (state, {payload}) => {
+      state.scroll = payload.scroll
+    }
     
   },
 });
 
 export const {
-  allProducts
+  allProducts,
+  scrollTop
 } = CartSlice.actions;
 export default CartSlice.reducer;
