@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { commerce } from "../../lib/commerce";
-import { Link, NavLink } from "react-router-dom";
 import CatList from "./CatList";
 
 const Category = () => {
   const [category, setCategory] = useState([]);
+
+  
 
   const fetchProducts = async () => {
     const response = await commerce.categories.list();
@@ -22,7 +23,7 @@ const Category = () => {
       )}
       <div className="  flex  w-[100%] justify-between items-center h-full  ">
         {category.length > 0 &&
-          category.map((categories) => {
+          category.reverse().map((categories) => {
             return <CatList key={categories.id} categories={categories} />;
           })}
       </div>
