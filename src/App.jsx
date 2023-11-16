@@ -91,18 +91,49 @@ const App = () => {
     };
   }
 
-  const value = 5
-  const sec =8
+  const test = runOnce((a, b) => console.log("Testing", a, b));
 
-  const test = runOnce((a,b) => console.log('Testing', a,b) )
+  function useMemorize (fn, context)  {
+    const res = {};
+    return function (...args) {
+      var argsCache = JSON.stringify(args);
+      if (!res[argsCache]) {
+        res[argsCache] = fn.call(context || this, ...args);
+      }
+      return res[argsCache];
+    };
+  }
 
-  useEffect(()=>{
-    test( 'one_ ' +  main?.scrollTop,topPosition)
-  test( 'two_ ' + main?.scrollTop,topPosition)
-  test( 'three_ ' + main?.scrollTop,topPosition)
-  },[main?.scrollTop,topPosition])
+  const clumsyProduct = (num1, num2) => {
+    for (let i = 0; i < 1000000; i++) { /* empty */ }
+    return num1 * num2;
+  };
 
-  
+  const memoClumprd = useMemorize(clumsyProduct);
+
+  console.time("first call");
+  console.log(memoClumprd(535, 657));
+  console.timeEnd("first call");
+
+  console.time("sec call");
+  console.log(memoClumprd(535, 657));
+  console.timeEnd("sec call");
+
+
+  function updateElText(id){
+    return function(content){
+      const elId = document.querySelector("#"+id);
+     elId ?  elId.textContent = content : null
+    }
+  }
+
+  const updateHeader = updateElText('header')
+
+  updateHeader('Vince')
+
+  useEffect(() => {
+    test("one_ " + main?.scrollTop, topPosition);
+  }, [main?.scrollTop, topPosition]);
 
   const { mobile, tablet, desktop } = useResponsive();
 

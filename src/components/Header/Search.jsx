@@ -1,5 +1,8 @@
 import { Link, NavLink } from "react-router-dom/dist";
 import CategoryData from "./CategoryData";
+import { useRef } from "react";
+import { commerce } from "../../lib/commerce";
+import { useState } from "react";
 
 const Search = () => {
   const search = () => {
@@ -43,8 +46,27 @@ const Search = () => {
 
     tapToClose?.classList.add("d-n");
   };
-
   const { category } = CategoryData();
+
+  const [searchTerm,setSearchTerm] = useState()
+
+  function runOnce(func, context) {
+    let ran;
+    return function () {
+      if (func) {
+        ran = func.apply(context || this, arguments);
+        func = null;
+      }
+      return ran;
+    };
+  }
+
+  const onSearch = runOnce((e)=>setSearchTerm(e.target.value))
+ 
+
+  const result = category?.filter(val => val.name?.toLowerCase().includes(searchTerm?.toLowerCase()) )
+
+
 
   return (
     <div className=" bg-[#212121] sticky-top  sticky  flex w-full h-[50px] justify-center items-center ">
@@ -69,6 +91,9 @@ const Search = () => {
             alt=""
           />
           <input
+          
+          onChange={onSearch}
+          value={searchTerm}
             onClick={search}
             placeholder="Search"
             className=" backdrop-blur-lg z-[999] placeholder-[#d8c7af7c] text-left flex items-center justify-center h-[95%] p-2 rounded-full w-[95%]   bg-transparent text-[#d8c7af] "
