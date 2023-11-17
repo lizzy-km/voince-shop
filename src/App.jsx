@@ -80,60 +80,7 @@ const App = () => {
   const boxWidth = box?.offsetWidth;
   const width = topPosition / 30;
 
-  function runOnce(func, context) {
-    let ran;
-    return function () {
-      if (func) {
-        ran = func.apply(context || this, arguments);
-        func = null;
-      }
-      return ran;
-    };
-  }
-
-  const test = runOnce((a, b) => console.log("Testing", a, b));
-
-  function useMemorize (fn, context)  {
-    const res = {};
-    return function (...args) {
-      var argsCache = JSON.stringify(args);
-      if (!res[argsCache]) {
-        res[argsCache] = fn.call(context || this, ...args);
-      }
-      return res[argsCache];
-    };
-  }
-
-  const clumsyProduct = (num1, num2) => {
-    for (let i = 0; i < 1000000; i++) { /* empty */ }
-    return num1 * num2;
-  };
-
-  const memoClumprd = useMemorize(clumsyProduct);
-
-  console.time("first call");
-  console.log(memoClumprd(535, 657));
-  console.timeEnd("first call");
-
-  console.time("sec call");
-  console.log(memoClumprd(535, 657));
-  console.timeEnd("sec call");
-
-
-  function updateElText(id){
-    return function(content){
-      const elId = document.querySelector("#"+id);
-     elId ?  elId.textContent = content : null
-    }
-  }
-
-  const updateHeader = updateElText('header')
-
-  updateHeader('Vince')
-
-  useEffect(() => {
-    test("one_ " + main?.scrollTop, topPosition);
-  }, [main?.scrollTop, topPosition]);
+  useEffect(() => {}, [main?.scrollTop, topPosition]);
 
   const { mobile, tablet, desktop } = useResponsive();
 
