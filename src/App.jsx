@@ -78,7 +78,7 @@ const App = () => {
   }, [main?.scrollTop]);
 
   const boxWidth = box?.offsetWidth;
-  const width = topPosition / 30;
+  const width = 0.5;
 
   useEffect(() => {}, [main?.scrollTop, topPosition]);
 

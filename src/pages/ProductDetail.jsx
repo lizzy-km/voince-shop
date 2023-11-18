@@ -4,7 +4,6 @@ const ProductDetail = () => {
     const {id} = useParams()
     const products = useSelector((state)=> state.CartSlice.filterProducts)
 
-  console.log(products);
   return (
     <div>
       {id}

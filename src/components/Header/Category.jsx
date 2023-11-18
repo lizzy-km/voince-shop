@@ -1,20 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { commerce } from "../../lib/commerce";
 import CatList from "./CatList";
+import CategoryData from "./CategoryData";
 
 const Category = () => {
-  const [category, setCategory] = useState([]);
-
-  
-
-  const fetchProducts = async () => {
-    const response = await commerce.categories.list();
-    setCategory((response && response.data) || []);
-  };
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+  const { category } = CategoryData();
 
   return (
     <div className="     flex w-[90%] h-[40px] py-1 justify-between items-center ">

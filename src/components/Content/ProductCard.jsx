@@ -1,11 +1,17 @@
-import React from 'react'
+import React from "react";
 
-const ProductCard = ({products}) => {
-  return (
-    <div className=' flex flex-col h-[300px] w-[20%] justify-center items-center bg-[#212121] ' >
-      
+const ProductCard = ({ products }) => {
+
+  
+
+
+    return (
+    <div className=" cursor-pointer flex flex-col h-[300px] w-[20%] justify-center items-center rounded bg-[#212121b0] ">
+      <picture>
+        <source srcset={products?.image?.url} type="image/webp" />
+      </picture>
     </div>
-  )
-}
+  );
+};
 
-export default ProductCard
+export default ProductCard;

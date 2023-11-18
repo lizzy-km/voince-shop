@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { commerce } from "../../lib/commerce";
 
 const CategoryData = () => {

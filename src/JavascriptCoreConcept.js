@@ -24,7 +24,7 @@ updateHeader("Vince");
 
 //Run only once using Closure
 
-function runOnce(func, context) {
+export function useRunOnce(func, context) {
   let ran;
   return function () {
     if (func) {
@@ -35,9 +35,9 @@ function runOnce(func, context) {
   };
 }
 
-const test = runOnce((a, b) => console.log("Testing", a, b));
+// const test = useRunOnce((a, b) => console.log("Testing", a, b));
 
-test("one_ " + 100, 130);
+// test("one_ " + 100, 130);
 
 // Memosize the calculation
 
