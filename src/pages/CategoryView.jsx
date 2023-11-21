@@ -39,7 +39,7 @@ const CategoryView = () => {
               ))}
           </form>
         </div>
-        <div className=" flex  gap-[5%] p-[1rem] w-[80%] h-auto bg-[#d8c7af] ">
+        <div className=" flex  gap-[5%] p-[1rem] w-[80%] h-auto bg-[#ffffff] ">
           {data?.length > 2 &&
             data !== null &&
             data.map((products) => {

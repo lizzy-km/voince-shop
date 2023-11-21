@@ -7,7 +7,7 @@ const Header = () => {
 
   return (
     <div className="  text-[#d8c7af] flex w-full h-auto pb-1 flex-col-reverse justify-evenly items-center my-2 ">
-      {state == false && <Category />}
+      <Category />
 
       <Search />
     </div>

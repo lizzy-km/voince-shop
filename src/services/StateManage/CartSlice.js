@@ -1,15 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
-import { useEffect } from "react";
 
 const initialState = {
   products: [],
   cart: [],
-  scroll: false,
+  scroll: true,
   catName:'',
   filterProducts:[],
   scrollT:[],
-  toLeft:0
+  toLeft:0,
+  category:[]
 };
 
 
@@ -37,9 +37,12 @@ export const CartSlice = createSlice({
     },
     setLeft: (state,{payload}) => {
       state.toLeft += payload 
-    }
+    },
+    addCategory: (state,{payload}) => {
+      state.category = payload.category
+    },
   },
 });
 
-export const { allProducts, scrollTop, setCatName, filterProducts,setScrollT,setLeft } = CartSlice.actions;
+export const { allProducts, scrollTop, setCatName, filterProducts,setScrollT,setLeft,addCategory } = CartSlice.actions;
 export default CartSlice.reducer;
