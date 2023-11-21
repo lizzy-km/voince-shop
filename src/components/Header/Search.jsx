@@ -96,7 +96,7 @@ const Search = () => {
           value={searchTerm}
             onClick={search}
             placeholder="Search"
-            className=" backdrop-blur-lg z-[999] placeholder-[#d8c7af7c] text-left flex items-center justify-center h-[95%] p-2 rounded-full w-[95%]   bg-transparent text-[#d8c7af] "
+            className=" backdrop-blur-lg z-[999] placeholder-[#f4f2f0] text-left flex items-center justify-center h-[95%] p-2 rounded-full w-[95%]   bg-transparent text-[#d8c7af] "
             type="text"
             name=""
             id=""

@@ -1,18 +1,17 @@
-import useMain from "./Main";
-
+import Hero from "./Hero";
 
 const Home = () => {
+  const nextSlide = () => {};
+
+  const prevSlide = () => {};
 
 
-  const { products } = useMain()
-
-  
 
   return (
-    <div className=" relative items-center gap-4  flex w-full  bg-[#ffffff] flex-col ">
-       
-       
+    <div className=" justify-center items-center flex flex-col w-full h-auto  " >
+      <Hero/>
     </div>
+   
   );
 };
 

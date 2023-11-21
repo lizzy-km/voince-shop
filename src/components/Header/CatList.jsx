@@ -10,10 +10,10 @@ const CatList = ({ categories }) => {
 
   return (
     <div
-      className=" flex justify-center items-center text-sm cursor-pointer "
+      className="  flex justify-center items-center text-sm cursor-pointer "
       key={categories.id}
     >
-      <NavLink onClick={()=> dispatch(setCatName({catName:categories.name}))} to={`/category/${categories.slug}`} >{categories.name}</NavLink>
+      <NavLink  onClick={()=> dispatch(setCatName({catName:categories.name}))} to={`/category/${categories.slug}`} >{categories.name}</NavLink>
     </div>
   );
 };
