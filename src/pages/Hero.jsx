@@ -36,41 +36,9 @@ const Hero = () => {
 
   return (
     <CarouselProvider>
-      <Indicators hero={hero} num={hero.length} >
-      <button 
-                    type="button"
-                    data-te-target="#carouselExampleCaptions"
-                     data-te-slide-to='0'
-                      data-te-carousel-active
-                    className="mx-[3px] box-content  h-[4px] w-[4px] rounded-full flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-[2px] -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-                    aria-current="true"
-                    aria-label='1'
-                  ></button>
-                   <button 
-                    type="button"
-                    data-te-target="#carouselExampleCaptions"
-                     data-te-slide-to='1'
-                    className="mx-[3px] box-content  h-[4px] w-[4px] rounded-full flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-[2px] -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-                    aria-current="true"
-                    aria-label='2'
-                  ></button>
-                   <button 
-                    type="button"
-                    data-te-target="#carouselExampleCaptions"
-                     data-te-slide-to='2'
-                    className="mx-[3px] box-content  h-[4px] w-[4px] rounded-full flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-[2px] -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-                    aria-current="true"
-                    aria-label='3'
-                  ></button>
-                   <button 
-                    type="button"
-                    data-te-target="#carouselExampleCaptions"
-                     data-te-slide-to='3'
-                    className="mx-[3px] box-content  h-[4px] w-[4px] rounded-full flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-[2px] -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-                    aria-current="true"
-                    aria-label='4'
-                  ></button>
-        </Indicators>
+      <Indicators hero={hero} num={hero.length} />
+      
+        
 
       <ItemHolder>
 
