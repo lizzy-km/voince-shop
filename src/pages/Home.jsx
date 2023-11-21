@@ -1,9 +1,6 @@
-import Hero from "./Hero";
+import Hero from "../components/Content/Hero";
 
 const Home = () => {
-  const nextSlide = () => {};
-
-  const prevSlide = () => {};
 
 
 

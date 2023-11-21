@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { Carousel, initTE } from "tw-elements";
-import Indicators from "../components/Carousel/Indicators";
-import Controls from "../components/Carousel/Controls";
-import CarouselProvider from "../components/Carousel/CarouselProvider";
-import ItemHolder from "../components/Carousel/ItemHolder";
-import Item from "../components/Carousel/Item";
+import Indicators from "../Carousel/Indicators";
+import Controls from "../Carousel/Controls";
+import CarouselProvider from "../Carousel/CarouselProvider";
+import ItemHolder from "../Carousel/ItemHolder";
+import Item from "../Carousel/Item";
 
 const Hero = () => {
   useEffect(() => {
-    initTE({ Carousel },true);
+    initTE({ Carousel }, true);
   }, []);
 
   // const control = document.getElementById('controls')
@@ -37,20 +37,11 @@ const Hero = () => {
   return (
     <CarouselProvider>
       <Indicators hero={hero} num={hero.length} />
-      
-        
 
       <ItemHolder>
-
-        {
-          hero.map(hr => {
-            return(
-              <Item hr={hr} key={hr.id} src={hr.src} />
-            )
-          })
-        }
-
-       
+        {hero.map((hr) => {
+          return <Item hr={hr} key={hr.id} src={hr.src} />;
+        })}
       </ItemHolder>
 
       <Controls />
