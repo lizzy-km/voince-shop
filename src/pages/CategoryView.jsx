@@ -2,16 +2,19 @@ import { useEffect, useState } from "react";
 import ProductCard from "../components/Content/ProductCard";
 import { useGetProductByCategory } from "./Function";
 import Cookies from "js-cookie";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 
 const CategoryView = () => {
   const [cate, setCate] = useState(null);
   const { data, cat } = useGetProductByCategory(cate);
   const catName = Cookies?.get("catName");
+  const {id} = useParams()
 
   useEffect(() => {
     setCate(null);
   }, [catName]);
+
+  console.log(data);
 
   return (
     <div className=" flex flex-col w-full justify-start items-start h-auto px-[5%] py-1 ">
@@ -19,7 +22,7 @@ const CategoryView = () => {
         <NavLink to={'/'} >
           Home /
         </NavLink>
-        <NavLink to={`/category/${catName}`}>
+        <NavLink to={`/category/${id}`}>
         {
           catName
         }
