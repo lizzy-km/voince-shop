@@ -78,7 +78,7 @@ const Search = () => {
           >
             <img
               className=" object-cover h-full  "
-              src="/src/assets/Logo.svg"
+              src="https://raw.githubusercontent.com/lizzy-km/voince-shop/fb9580483eb7b996b7d5282818c144d9c30fdf19/src/assets/Logo.svg"
               alt=""
             />
           </NavLink>
@@ -87,7 +87,7 @@ const Search = () => {
         <div className=" relative     flex justify-start px-4 items-center h-full w-[75%] rounded-full bg-[#35343492]  border border-[#d8c7af] ">
           <img
             className=" z-[999] opacity-50 "
-            src="/src/assets/Search.svg"
+            src="https://raw.githubusercontent.com/lizzy-km/voince-shop/fb9580483eb7b996b7d5282818c144d9c30fdf19/src/assets/Search.svg"
             alt=""
           />
           <input
@@ -178,17 +178,17 @@ const Search = () => {
             to={"/login"}
             className=" flex justify-evenly items-center gap-2 "
           >
-            <img src="/src/assets/User.svg" alt="" />
+            <img src="https://raw.githubusercontent.com/lizzy-km/voince-shop/fb9580483eb7b996b7d5282818c144d9c30fdf19/src/assets/User.svg" alt="" />
             <p>Login</p>
           </NavLink>
           <NavLink
             to={"/favourite"}
             className=" flex justify-evenly items-center "
           >
-            <img src="/src/assets/Heart.svg" alt="" />
+            <img src="https://raw.githubusercontent.com/lizzy-km/voince-shop/fb9580483eb7b996b7d5282818c144d9c30fdf19/src/assets/Heart.svg" alt="" />
           </NavLink>
           <NavLink to={"/cart"} className=" flex justify-evenly items-center ">
-            <img src="/src/assets/Cart.svg" alt="" />
+            <img src="https://raw.githubusercontent.com/lizzy-km/voince-shop/fb9580483eb7b996b7d5282818c144d9c30fdf19/src/assets/Cart.svg" alt="" />
           </NavLink>
         </div>
       </div>

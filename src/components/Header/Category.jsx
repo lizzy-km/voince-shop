@@ -4,6 +4,7 @@ import CategoryData from "./CategoryData";
 const Category = () => {
   const  {category}  = CategoryData();
  
+  const cat = category?.reverse()
 
 
   return (
@@ -13,7 +14,7 @@ const Category = () => {
       )}
       <div className="  flex  w-[100%] justify-between items-end h-full  ">
         {category?.length > 1 &&
-          category?.reverse()?.map((categories) => {
+          cat?.map((categories) => {
             return <CatList key={categories.id} categories={categories} />;
           })}
       </div>
