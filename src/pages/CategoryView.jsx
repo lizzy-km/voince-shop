@@ -14,7 +14,6 @@ const CategoryView = () => {
     setCate(null);
   }, [catName]);
 
-  console.log(data);
 
   return (
     <div className=" flex flex-col w-full justify-start items-start h-auto px-[5%] py-1 ">

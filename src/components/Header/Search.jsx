@@ -1,8 +1,7 @@
 import { Link, NavLink } from "react-router-dom/dist";
 import CategoryData from "./CategoryData";
-import { useRef } from "react";
-import { commerce } from "../../lib/commerce";
 import { useState } from "react";
+import useMain from "../../pages/Main";
 
 const Search = () => {
   const search = () => {
@@ -47,6 +46,7 @@ const Search = () => {
     tapToClose?.classList.add("d-n");
   };
   const { category } = CategoryData();
+  const { products } = useMain()
 
   const [searchTerm,setSearchTerm] = useState()
 
@@ -63,8 +63,7 @@ const Search = () => {
 
   const onSearch = runOnce((e)=>setSearchTerm(e.target.value))
  
-
-  const result = category?.filter(val => val.name?.toLowerCase().includes(searchTerm?.toLowerCase()) )
+  const data = products?.filter(product => product.name?.toLowerCase().includes(searchTerm?.toLowerCase()))
 
 
 
@@ -109,7 +108,20 @@ const Search = () => {
               id="searchDetail"
               className=" d-n flex flex-col justify-between w-[90%] h-[80%] py-[1rem] "
             >
-              <div>
+              { searchTerm.length > 1 &&
+                data?.map(dta=>{
+                  return(
+                    <div key={dta.id} >
+                      <p>
+                        {dta.name}
+                      </p>
+                    </div>
+                  )
+                })
+              }
+              { searchTerm < 1 &&
+                <>
+                 <div>
                 <p className=" py-[1rem] text-base font-semibold ">
                   Previous Searches
                 </p>
@@ -160,6 +172,9 @@ const Search = () => {
                       })}
                 </div>
               </div>
+                </>
+              }
+             
             </div>
           </div>
         </div>
