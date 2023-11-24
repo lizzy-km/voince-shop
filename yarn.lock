@@ -2178,6 +2178,7 @@ __metadata:
     pure-react-carousel: ^1.30.1
     react: ^18.2.0
     react-dom: ^18.2.0
+    react-rating-stars-component: ^2.2.0
     react-redux: ^8.1.3
     react-router-dom: ^6.17.0
     tailwindcss: ^3.3.5
@@ -4935,6 +4936,13 @@ __metadata:
   version: 18.2.0
   resolution: "react-is@npm:18.2.0"
   checksum: e72d0ba81b5922759e4aff17e0252bd29988f9642ed817f56b25a3e217e13eea8a7f2322af99a06edb779da12d5d636e9fda473d620df9a3da0df2a74141d53e
+  languageName: node
+  linkType: hard
+
+"react-rating-stars-component@npm:^2.2.0":
+  version: 2.2.3
+  resolution: "react-rating-stars-component@npm:2.2.3"
+  checksum: 73be7b080aa02372ab06642d50f29cf08eea24276c01b68905ef10e0293835fd986ebfa5e0f4b650e504e8215b16aacdf3f858fead2df2bdc77a5f7d8dbad4ee
   languageName: node
   linkType: hard
 
