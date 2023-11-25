@@ -74,9 +74,7 @@ const Search = () => {
 
   const searchHist = useSelector((state) => state.CartSlice.history);
 
-  const his = Cookies.get("history");
 
-  const history = JSON.parse(his);
 
   function setCook() {
     return function () {
