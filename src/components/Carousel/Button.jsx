@@ -2,7 +2,6 @@ import React from 'react'
 
 const Button = ({hr}) => {
 
-    console.log(hr.id);
 
     if (hr.id == '0') {
         return (

@@ -127,7 +127,7 @@ const Search = () => {
            <img
             onClick={() => setSearchTerm("")}
             style={{
-              width:searchTerm.length > 1 ? '30px' : 0
+              width:searchTerm?.length > 1 ? '30px' : 0
             }}
             className=" transition-all z-[999] opacity-50 p-1  "
             src="https://raw.githubusercontent.com/lizzy-km/voince-shop/fb9580483eb7b996b7d5282818c144d9c30fdf19/src/assets/Close.svg"
