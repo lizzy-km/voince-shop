@@ -1,9 +1,12 @@
 import { Link, NavLink } from "react-router-dom/dist";
 import CategoryData from "./CategoryData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useMain from "../../pages/Main";
 import Rate from "../Rate";
 import SearchItem from "./SearchItem";
+import Cookies from "js-cookie";
+import { useDispatch, useSelector } from "react-redux";
+import { delHistory } from "../../services/StateManage/CartSlice";
 
 const Search = () => {
   const search = () => {
@@ -69,6 +72,26 @@ const Search = () => {
     product.name?.toLowerCase().includes(searchTerm?.toLowerCase())
   );
 
+  const searchHist = useSelector((state) => state.CartSlice.history);
+
+  const his = Cookies.get("history");
+
+  const history = JSON.parse(his);
+
+  function setCook() {
+    return function () {
+      return function () {
+        Cookies.set("history", JSON.stringify(searchHist));
+      };
+    };
+  }
+
+  useEffect(() => {
+    setCook();
+  }, [searchHist]);
+
+  const dispatch = useDispatch();
+
   return (
     <div className=" bg-[#212121] sticky-top  sticky  flex w-full h-[50px] justify-center items-center ">
       <div className=" flex w-[90%] h-[90%] justify-between items-center ">
@@ -101,6 +124,17 @@ const Search = () => {
             name=""
             id=""
           />
+           <img
+            onClick={() => setSearchTerm("")}
+            style={{
+              width:searchTerm.length > 1 ? '30px' : 0
+            }}
+            className=" transition-all z-[999] opacity-50 p-1  "
+            src="https://raw.githubusercontent.com/lizzy-km/voince-shop/fb9580483eb7b996b7d5282818c144d9c30fdf19/src/assets/Close.svg"
+            alt=""
+          />
+          
+          
           <div
             id="search"
             className=" opacity-0 z-[99] absolute left-0 top-0 flex  flex-col justify-center items-center backdrop-blur-lg bg-[#35343494]  h-[0px] w-full rounded-[25px] "
@@ -112,9 +146,13 @@ const Search = () => {
               <div className=" flex flex-col justify-start items-start ">
                 {searchTerm?.length > 1 &&
                   data?.map((dta) => {
-                   
                     return (
-                     <SearchItem key={dta.id} dta={dta} searchTerm={searchTerm} />
+                      <SearchItem
+                        searchClose={searchClose}
+                        key={dta.id}
+                        dta={dta}
+                        searchTerm={searchTerm}
+                      />
                     );
                   })}
               </div>
@@ -125,9 +163,35 @@ const Search = () => {
                     <p className=" py-[1rem] text-base font-semibold ">
                       Previous Searches
                     </p>
-                    <div>
-                      <p className="text-lg font-light">No search history</p>
-                    </div>
+                    {searchHist?.length > 0 ? (
+                      <div className=" flex flex-col justify-start items-start p-2 ">
+                        {searchHist.map((hist) => {
+                          return (
+                            <div
+                              className=" justify-between flex items-center w-full cursor-pointer hover:bg-[#2222229a] p-1 rounded "
+                              key={hist.id}
+                            >
+                              <span
+                                onClick={() => setSearchTerm(hist.name)}
+                                className=" tracking-wide "
+                              >
+                                {hist.name}
+                              </span>
+                              <img
+                                onClick={() => dispatch(delHistory(hist))}
+                                className=" z-[999] opacity-50 p-1 w-[30px] "
+                                src="https://raw.githubusercontent.com/lizzy-km/voince-shop/fb9580483eb7b996b7d5282818c144d9c30fdf19/src/assets/Close.svg"
+                                alt=""
+                              />
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <div>
+                        <p className="text-lg font-light">No search history</p>
+                      </div>
+                    )}
                   </div>
 
                   <div>
