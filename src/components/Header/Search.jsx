@@ -2,6 +2,8 @@ import { Link, NavLink } from "react-router-dom/dist";
 import CategoryData from "./CategoryData";
 import { useState } from "react";
 import useMain from "../../pages/Main";
+import Rate from "../Rate";
+import SearchItem from "./SearchItem";
 
 const Search = () => {
   const search = () => {
@@ -46,9 +48,9 @@ const Search = () => {
     tapToClose?.classList.add("d-n");
   };
   const { category } = CategoryData();
-  const { products } = useMain()
+  const { products } = useMain();
 
-  const [searchTerm,setSearchTerm] = useState()
+  const [searchTerm, setSearchTerm] = useState();
 
   function runOnce(func, context) {
     let ran;
@@ -61,11 +63,11 @@ const Search = () => {
     };
   }
 
-  const onSearch = runOnce((e)=>setSearchTerm(e.target.value))
- 
-  const data = products?.filter(product => product.name?.toLowerCase().includes(searchTerm?.toLowerCase()))
+  const onSearch = runOnce((e) => setSearchTerm(e.target.value));
 
-
+  const data = products?.filter((product) =>
+    product.name?.toLowerCase().includes(searchTerm?.toLowerCase())
+  );
 
   return (
     <div className=" bg-[#212121] sticky-top  sticky  flex w-full h-[50px] justify-center items-center ">
@@ -90,9 +92,8 @@ const Search = () => {
             alt=""
           />
           <input
-          
-          onChange={onSearch}
-          value={searchTerm}
+            onChange={onSearch}
+            value={searchTerm}
             onClick={search}
             placeholder="Search"
             className=" backdrop-blur-lg z-[999] placeholder-[#f4f2f0] text-left flex items-center justify-center h-[95%] p-2 rounded-full w-[95%]   bg-transparent text-[#d8c7af] "
@@ -108,73 +109,71 @@ const Search = () => {
               id="searchDetail"
               className=" d-n flex flex-col justify-between w-[90%] h-[80%] py-[1rem] "
             >
-              { searchTerm.length > 1 &&
-                data?.map(dta=>{
-                  return(
-                    <div key={dta.id} >
-                      <p>
-                        {dta.name}
-                      </p>
-                    </div>
-                  )
-                })
-              }
-              { searchTerm < 1 &&
+              <div className=" flex flex-col justify-start items-start ">
+                {searchTerm?.length > 1 &&
+                  data?.map((dta) => {
+                   
+                    return (
+                     <SearchItem key={dta.id} dta={dta} searchTerm={searchTerm} />
+                    );
+                  })}
+              </div>
+
+              {!searchTerm && (
                 <>
-                 <div>
-                <p className=" py-[1rem] text-base font-semibold ">
-                  Previous Searches
-                </p>
-                <div>
-                  <p className="text-lg font-light">No search history</p>
-                </div>
-              </div>
+                  <div>
+                    <p className=" py-[1rem] text-base font-semibold ">
+                      Previous Searches
+                    </p>
+                    <div>
+                      <p className="text-lg font-light">No search history</p>
+                    </div>
+                  </div>
 
-              <div>
-                <p className=" py-[1rem] text-base font-semibold ">
-                  Popular Categories
-                </p>
-                <div className=" flex gap-2 ">
-                  {!category.length && (
-                    <div className="flex justify-center items-center h-[100px] w-[90px] bg-[#2121216c] rounded-xl "></div>
-                  )}
+                  <div>
+                    <p className=" py-[1rem] text-base font-semibold ">
+                      Popular Categories
+                    </p>
+                    <div className=" flex gap-2 ">
+                      {!category.length && (
+                        <div className="flex justify-center items-center h-[100px] w-[90px] bg-[#2121216c] rounded-xl "></div>
+                      )}
 
-                  {category.length > 0 &&
-                    category
-                      .filter((cat, index) => index < 5)
-                      .map((data) => {
-                        return (
-                          <Link
-                            onClick={searchClose}
-                            to={`/category/${data.name}`}
-                            id="category"
-                            key={data.id}
-                            className="flex relative justify-center items-center h-[120px] w-[90px] bg-[#2121216c] rounded-xl "
-                          >
-                            {data.assets.map((img) => (
-                              <img
+                      {category.length > 0 &&
+                        category
+                          .filter((cat, index) => index < 5)
+                          .map((data) => {
+                            return (
+                              <Link
                                 onClick={searchClose}
-                                key={img.id}
-                                className=" object-cover rounded-xl h-full "
-                                src={img.url}
-                                alt={data.name}
-                              />
-                            ))}
-                            <div
-                              onClick={searchClose}
-                              id="catName"
-                              className=" rounded-xl backdrop-blur-[4px] text-xs text-center bg-[#2121217b] flex justify-center items-center w-[100%] h-[40%] absolute top-0 left-0 "
-                            >
-                              <p>{data.name}</p>
-                            </div>
-                          </Link>
-                        );
-                      })}
-                </div>
-              </div>
+                                to={`/category/${data.name}`}
+                                id="category"
+                                key={data.id}
+                                className="flex relative justify-center items-center h-[120px] w-[90px] bg-[#2121216c] rounded-xl "
+                              >
+                                {data.assets.map((img) => (
+                                  <img
+                                    onClick={searchClose}
+                                    key={img.id}
+                                    className=" object-cover rounded-xl h-full "
+                                    src={img.url}
+                                    alt={data.name}
+                                  />
+                                ))}
+                                <div
+                                  onClick={searchClose}
+                                  id="catName"
+                                  className=" rounded-xl backdrop-blur-[4px] text-xs text-center bg-[#2121217b] flex justify-center items-center w-[100%] h-[40%] absolute top-0 left-0 "
+                                >
+                                  <p>{data.name}</p>
+                                </div>
+                              </Link>
+                            );
+                          })}
+                    </div>
+                  </div>
                 </>
-              }
-             
+              )}
             </div>
           </div>
         </div>
@@ -193,23 +192,31 @@ const Search = () => {
             to={"/login"}
             className=" flex justify-evenly items-center gap-2 "
           >
-            <img src="https://raw.githubusercontent.com/lizzy-km/voince-shop/fb9580483eb7b996b7d5282818c144d9c30fdf19/src/assets/User.svg" alt="" />
+            <img
+              src="https://raw.githubusercontent.com/lizzy-km/voince-shop/fb9580483eb7b996b7d5282818c144d9c30fdf19/src/assets/User.svg"
+              alt=""
+            />
             <p>Login</p>
           </NavLink>
           <NavLink
             to={"/favourite"}
             className=" flex justify-evenly items-center "
           >
-            <img src="https://raw.githubusercontent.com/lizzy-km/voince-shop/fb9580483eb7b996b7d5282818c144d9c30fdf19/src/assets/Heart.svg" alt="" />
+            <img
+              src="https://raw.githubusercontent.com/lizzy-km/voince-shop/fb9580483eb7b996b7d5282818c144d9c30fdf19/src/assets/Heart.svg"
+              alt=""
+            />
           </NavLink>
           <NavLink to={"/cart"} className=" flex justify-evenly items-center ">
-            <img src="https://raw.githubusercontent.com/lizzy-km/voince-shop/fb9580483eb7b996b7d5282818c144d9c30fdf19/src/assets/Cart.svg" alt="" />
+            <img
+              src="https://raw.githubusercontent.com/lizzy-km/voince-shop/fb9580483eb7b996b7d5282818c144d9c30fdf19/src/assets/Cart.svg"
+              alt=""
+            />
           </NavLink>
         </div>
       </div>
     </div>
   );
-  
 };
 
 export default Search;
